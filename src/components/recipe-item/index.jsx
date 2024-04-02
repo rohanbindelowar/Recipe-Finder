@@ -12,7 +12,7 @@ export default function RecipeItem({ items }) {
       <div className="details">
         <span>{items.publisher}</span>
         <h2>{items.title}</h2>
-        <Link to={`/recipe-item/${items.id}`} className="recipe-btn">
+        <Link to={`/recipeFinder/recipe-item/${items.id}`} className="recipe-btn">
           Recipe Details
         </Link>
       </div>

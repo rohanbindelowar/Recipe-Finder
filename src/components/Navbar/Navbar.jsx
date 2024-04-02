@@ -9,7 +9,7 @@ export const Navbar = () => {
   const {searchParam, setSearchParam, handleSubmit} =useContext(GlobalContext);
   return (
     <div className="nav">
-      <NavLink to={'/'} className='navItem'><h2>Recipe Finder</h2></NavLink>
+      <NavLink to={'/recipeFinder/'} className='navItem'><h2>Recipe Finder</h2></NavLink>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -23,10 +23,10 @@ export const Navbar = () => {
 
       <ul>
         <li>
-          <NavLink to={"/"} className='navItem'>Home</NavLink>
+          <NavLink to={"/recipeFinder/"} className='navItem'>Home</NavLink>
         </li>
         <li>
-          <NavLink to={"/favorites"} className='navItem'>Favorites</NavLink>
+          <NavLink to={"/recipeFinder/favorites"} className='navItem'>Favorites</NavLink>
         </li>
       </ul>
     </div>

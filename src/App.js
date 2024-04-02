@@ -10,9 +10,9 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/recipe-item/:id" element={<Details />} />
+          <Route path="/recipeFinder" element={<Home />} />
+          <Route path="/recipeFinder/favorites" element={<Favorites />} />
+          <Route path="/recipeFinder/recipe-item/:id" element={<Details />} />
         </Routes>
       </div>
     </div>
