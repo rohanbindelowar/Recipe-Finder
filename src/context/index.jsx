@@ -30,18 +30,20 @@ export default function GlobalState({ children }) {
     }
   }
 
-  function handleAddToFavorite(getCurrentItem){
-    let copyFavoriteList = [...favoriteList]
-    const index = copyFavoriteList.findIndex(item=> item.id == getCurrentItem.id)
-    
-    if(index==-1){
+  function handleAddToFavorite(getCurrentItem) {
+    let copyFavoriteList = [...favoriteList];
+    const index = copyFavoriteList.findIndex(
+      (item) => item.id == getCurrentItem.id
+    );
+
+    if (index === -1) {
       copyFavoriteList.push(getCurrentItem);
+    } else {
+      copyFavoriteList.splice(index);
     }
-    else{
-      copyFavoriteList.splice(index)
-    }
-    console.log(favoriteList,"fafa")
+    setFavoriteList(copyFavoriteList);
   }
+  console.log(favoriteList,"ffd")
   return (
     <GlobalContext.Provider
       value={{
@@ -54,7 +56,7 @@ export default function GlobalState({ children }) {
         setRecipeDetailsData,
         favoriteList,
         setFavoriteList,
-        handleAddToFavorite
+        handleAddToFavorite,
       }}
     >
       {children}

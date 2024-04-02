@@ -5,7 +5,12 @@ import "./styles.css";
 
 export const Details = () => {
   const { id } = useParams();
-  const { recipeDetailsData, setRecipeDetailsData,  handleAddToFavorite } = useContext(GlobalContext);
+  const {
+    recipeDetailsData,
+    setRecipeDetailsData,
+    favoriteList,
+    handleAddToFavorite,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     async function getRecipeDetails() {
@@ -18,7 +23,7 @@ export const Details = () => {
     }
     getRecipeDetails();
   }, []);
-  console.log(recipeDetailsData);
+
   return (
     <div className="container">
       <div className="box-info">
@@ -36,7 +41,15 @@ export const Details = () => {
             Cooking Time: {recipeDetailsData?.recipe?.cooking_time}minutes{" "}
           </h4>
           <h4> Servings: {recipeDetailsData?.recipe?.servings}</h4>
-          <button onClick={handleAddToFavorite(recipeDetailsData?.recipe)} className="favorite-btn" >Save as Favorites </button>
+          <button
+            onClick={()=> handleAddToFavorite(recipeDetailsData?.recipe)}
+            className="favorite-btn"
+          >
+            {
+              favoriteList.findIndex(item=> item.id == recipeDetailsData?.recipe?.id) !== -1? 'Remove From Favorites'
+              : "Save as Favorites"
+            }
+          </button>
         </div>
         <div className="ingredients">
           <h3>Ingredients</h3>
@@ -44,8 +57,12 @@ export const Details = () => {
             {recipeDetailsData?.recipe?.ingredients &&
               recipeDetailsData.recipe.ingredients.map((item, index) => (
                 <li key={index}>
-                  <span>{item.description}</span><span> - {item.quantity}
-                  {item.unit}</span>
+                  <span>{item.description}</span>
+                  <span>
+                    {" "}
+                    - {item.quantity}
+                    {item.unit}
+                  </span>
                 </li>
               ))}
           </ol>
